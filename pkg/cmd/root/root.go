@@ -27,6 +27,7 @@ import (
 )
 
 func NewCmdRoot(f *cmdutil.Factory, version, buildDate string) *cobra.Command {
+
 	cmd := &cobra.Command{
 		Use:   "gh <command> <subcommand> [flags]",
 		Short: "GitHub CLI",
@@ -70,6 +71,7 @@ func NewCmdRoot(f *cmdutil.Factory, version, buildDate string) *cobra.Command {
 	cmd.SetErr(f.IOStreams.ErrOut)
 
 	cmd.PersistentFlags().Bool("help", false, "Show help for command")
+
 	cmd.SetHelpFunc(rootHelpFunc)
 	cmd.SetUsageFunc(rootUsageFunc)
 

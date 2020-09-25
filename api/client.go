@@ -279,6 +279,7 @@ func (c Client) GraphQL(hostname string, query string, variables map[string]inte
 
 	resp, err := c.http.Do(req)
 	if err != nil {
+		fmt.Println(err)
 		return err
 	}
 	defer resp.Body.Close()

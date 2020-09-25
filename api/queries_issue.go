@@ -123,6 +123,33 @@ func IssueCreate(client *Client, repo *Repository, params map[string]interface{}
 	return &result.CreateIssue.Issue, nil
 }
 
+func CommentCreate(client *Client, repo *Repository, params map[string]interface{}) error {
+	query := `
+	mutation CommentCreate($input: AddCommentInput!) {
+		addComment(input: $input) { clientMutationId }
+	}`
+
+	result := struct {
+		AddComment struct{}
+	}{}
+
+	// params["body"] = "this is the pen"
+	// params["subjectId"] = "this is the pen"
+
+	variables := map[string]interface{}{
+		"input": params,
+	}
+
+	err := client.GraphQL(repo.RepoHost(), query, variables, &result)
+	fmt.Println(err)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func IssueStatus(client *Client, repo ghrepo.Interface, currentUsername string) (*IssuesPayload, error) {
 	type response struct {
 		Repository struct {

@@ -169,6 +169,7 @@ const (
 
 func (pr *PullRequest) ReviewStatus() PullRequestReviewStatus {
 	var status PullRequestReviewStatus
+	// fmt.Println("status is ", pr.ReviewDecision)
 	switch pr.ReviewDecision {
 	case "CHANGES_REQUESTED":
 		status.ChangesRequested = true

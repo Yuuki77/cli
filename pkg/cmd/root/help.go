@@ -20,6 +20,10 @@ func rootUsageFunc(command *cobra.Command) error {
 			if c.Hidden {
 				continue
 			}
+
+			// ここが呼ばれてる
+			// fmt.Println(c.Name())
+
 			command.Printf("  %s\n", c.Name())
 		}
 		return nil

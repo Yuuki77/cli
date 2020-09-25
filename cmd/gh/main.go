@@ -134,6 +134,7 @@ func main() {
 	rootCmd.SetArgs(expandedArgs)
 
 	if cmd, err := rootCmd.ExecuteC(); err != nil {
+		fmt.Println(err)
 		printError(stderr, err, cmd, hasDebug)
 
 		var httpErr api.HTTPError
